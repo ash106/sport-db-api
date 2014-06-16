@@ -36,6 +36,6 @@ build/
 ################
 # SQLite dbs
 
-*.db
+# *.db
 *.sqlite
 *.sqlite3
