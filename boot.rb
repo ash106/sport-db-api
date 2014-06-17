@@ -17,13 +17,17 @@ Bundler.require(:default, ENV['RACK_ENV'].to_sym)
 
 # Database Setup & Config
 
-db_config = {
-  adapter:  'sqlite3',
-  database: 'football.db'     # NOTE: change to use your db of choice (e.g. worldcup.db, bundesliga.db, ski.db etc.)
-}
+# db_config = {
+#   adapter:  'sqlite3',
+#   database: 'football.db'     # NOTE: change to use your db of choice (e.g. worldcup.db, bundesliga.db, ski.db etc.)
+# }
 
-pp db_config
-ActiveRecord::Base.establish_connection( db_config )
+# pp db_config
+# ActiveRecord::Base.establish_connection( db_config )
+
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 ## for debugging - disable for production use
 ActiveRecord::Base.logger = Logger.new( STDOUT )
